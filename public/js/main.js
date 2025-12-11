@@ -599,11 +599,11 @@ async function deleteProduct(id) {
         renderProducts();
         updateStatistics();
         
-        showToast('✅ Producto eliminado correctamente', 'success');
+        showToast('Producto eliminado correctamente', 'success');
         
     } catch (error) {
         console.error('Error al eliminar producto:', error);
-        showToast(`❌ Error: ${error.message}`, 'error');
+        showToast(`Error: ${error.message}`, 'error');
     } finally {
         showLoading(false);
     }
@@ -612,7 +612,7 @@ async function deleteProduct(id) {
 function viewProduct(id) {
     const product = products.find(p => p.id === id);
     if (product) {
-        showToast(`📋 Vista detallada de: ${product.name}`, 'info');
+        showToast(`Vista detallada de: ${product.name}`, 'info');
     }
 }
 
