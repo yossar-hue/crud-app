@@ -241,6 +241,6 @@ if (!fs.existsSync(dataFilePath)) {
 
 // Iniciar servidor
 app.listen(PORT, () => {
-    console.log(`🔥 SISTEMA Gestion corriendo en http://localhost:${PORT}`);
-    console.log(`📁 Archivo de datos: ${dataFilePath}`);
+    console.log(`SISTEMA Gestion corriendo en http://localhost:${PORT}`);
+    console.log(`Archivo de datos: ${dataFilePath}`);
 });
