@@ -1,0 +1,381 @@
+<!-- Navbar Superior -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-negro fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <div class="d-flex align-items-center">
+                <div class="logo-icon me-2">
+                    <i class="fas fa-database"></i>
+                </div>
+                <span class="fw-bold">Render</span>
+                <span class="rojo-text fw-bold ms-1">Sistema</span>
+            </div>
+        </a>
+        
+        <div class="d-flex align-items-center">
+            <div class="user-info d-none d-md-flex align-items-center me-4">
+                <div class="user-avatar me-2">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div>
+                    <div class="user-name">Administrador</div>
+                    <div class="user-role rojo-text"><strong>Anthony</strong></div>
+                </div>
+            </div>
+            
+            <div class="stats d-none d-lg-flex">
+                <div class="stat-item me-3">
+                    <i class="fas fa-box me-1"></i>
+                    <span id="totalProducts">0</span> Productos
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-layer-group me-1"></i>
+                    <span id="totalStock">0</span> En Stock
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Contenido Principal -->
+<main class="main-content">
+    <!-- Header del Contenido -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="page-title">
+                        <i class="fas fa-cube me-2 rojo-text"></i>
+                        Gestión de Productos
+                    </h1>
+                    <p class="page-subtitle">Administra todos los productos del inventario</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <button class="btn btn-rojo-gradiente" data-bs-toggle="modal" data-bs-target="#productModal">
+                        <i class="fas fa-plus-circle me-2"></i>
+                        Nuevo Producto
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido -->
+    <div class="container-fluid">
+        <!-- Tarjetas de Resumen -->
+        <div class="row mb-4">
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card summary-card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-subtitle">Total Productos</h6>
+                                <h3 class="card-title" id="cardTotalProducts">0</h3>
+                            </div>
+                            <div class="icon-circle bg-rojo-claro">
+                                <i class="fas fa-boxes rojo-text"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card summary-card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-subtitle">Valor Total</h6>
+                                <h3 class="card-title" id="cardTotalValue">$0</h3>
+                            </div>
+                            <div class="icon-circle bg-rojo-claro">
+                                <i class="fas fa-dollar-sign rojo-text"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card summary-card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-subtitle">Stock Total</h6>
+                                <h3 class="card-title" id="cardTotalStock">0</h3>
+                            </div>
+                            <div class="icon-circle bg-rojo-claro">
+                                <i class="fas fa-layer-group rojo-text"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card summary-card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-subtitle">Categorías</h6>
+                                <h3 class="card-title" id="cardCategories">0</h3>
+                            </div>
+                            <div class="icon-circle bg-rojo-claro">
+                                <i class="fas fa-tags rojo-text"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla de Productos -->
+        <div class="card main-card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-table me-2"></i>
+                    Lista de Productos
+                </h5>
+                <div class="card-tools">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar producto..." id="searchInput">
+                        <button class="btn btn-outline-negro" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="table-negro">
+                            <tr>
+                                <th>
+                                    <i class="fas fa-hashtag"></i> ID
+                                </th>
+                                <th>
+                                    <i class="fas fa-cube"></i> Producto
+                                </th>
+                                <th>
+                                    <i class="fas fa-tag"></i> Categoría
+                                </th>
+                                <th>
+                                    <i class="fas fa-dollar-sign"></i> Precio
+                                </th>
+                                <th>
+                                    <i class="fas fa-boxes"></i> Stock
+                                </th>
+                                <th>
+                                    <i class="fas fa-calendar"></i> Creado
+                                </th>
+                                <th>
+                                    <i class="fas fa-cogs"></i> Acciones
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsTable">
+                            <!-- Productos cargados dinámicamente -->
+                            <tr id="loadingRow">
+                                <td colspan="7" class="text-center py-5">
+                                    <div class="spinner-border rojo-text" role="status">
+                                        <span class="visually-hidden">Cargando...</span>
+                                    </div>
+                                    <p class="mt-3 text-gris">Cargando productos...</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="table-footer mt-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <div class="table-info" id="tableInfo">
+                                Mostrando 0 de 0 productos
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination justify-content-end mb-0" id="pagination">
+                                    <!-- Paginación dinámica -->
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Modal para Producto -->
+<div class="modal fade" id="productModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-negro text-blanco">
+                <h5 class="modal-title" id="modalTitle">
+                    <i class="fas fa-plus-circle me-2"></i>
+                    Nuevo Producto
+                </h5>
+                <button type="button" class="btn-close btn-close-blanco" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="productForm" novalidate>
+                    <input type="hidden" id="productId">
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mb-4">
+                                <label for="productName" class="form-label">
+                                    <i class="fas fa-tag me-2 rojo-text"></i>
+                                    Nombre del Producto *
+                                </label>
+                                <input type="text" class="form-control form-control-lg" 
+                                       id="productName" 
+                                       name="productName"
+                                       placeholder="Ej: Laptop Gamer Pro"
+                                       required
+                                       minlength="3">
+                                <div class="invalid-feedback">
+                                    El nombre debe tener al menos 3 caracteres
+                                </div>
+                                <div class="form-text">Nombre descriptivo del producto</div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="form-group mb-4">
+                                <label for="productCategory" class="form-label">
+                                    <i class="fas fa-tags me-2 rojo-text"></i>
+                                    Categoría *
+                                </label>
+                                <select class="form-select form-select-lg" 
+                                        id="productCategory" 
+                                        name="productCategory"
+                                        required>
+                                    <option value="">Seleccionar categoría</option>
+                                    <option value="Electrónica">Electrónica</option>
+                                    <option value="Ropa">Ropa</option>
+                                    <option value="Hogar">Hogar</option>
+                                    <option value="Deportes">Deportes</option>
+                                    <option value="Alimentos">Alimentos</option>
+                                    <option value="Libros">Libros</option>
+                                    <option value="Otros">Otros</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Por favor seleccione una categoría
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mb-4">
+                                <label for="productPrice" class="form-label">
+                                    <i class="fas fa-dollar-sign me-2 rojo-text"></i>
+                                    Precio *
+                                </label>
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" 
+                                           class="form-control" 
+                                           id="productPrice"
+                                           name="productPrice"
+                                           step="0.01" 
+                                           min="0.01" 
+                                           placeholder="0.00"
+                                           required>
+                                </div>
+                                <div class="invalid-feedback">
+                                    El precio debe ser mayor a 0
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="form-group mb-4">
+                                <label for="productStock" class="form-label">
+                                    <i class="fas fa-boxes me-2 rojo-text"></i>
+                                    Stock Disponible *
+                                </label>
+                                <input type="number" 
+                                       class="form-control form-control-lg" 
+                                       id="productStock"
+                                       name="productStock"
+                                       min="0" 
+                                       value="0"
+                                       required>
+                                <div class="invalid-feedback">
+                                    El stock no puede ser negativo
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <label for="productDescription" class="form-label">
+                            <i class="fas fa-align-left me-2 rojo-text"></i>
+                            Descripción
+                        </label>
+                        <textarea class="form-control" 
+                                  id="productDescription"
+                                  name="productDescription"
+                                  rows="4"
+                                  maxlength="500"
+                                  placeholder="Descripción detallada del producto..."></textarea>
+                        <div class="form-text">
+                            <span id="charCount">0</span>/500 caracteres
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-negro" data-bs-dismiss="modal">
+                    <i class="fas fa-times me-2"></i>
+                    Cancelar
+                </button>
+                <button type="button" class="btn btn-rojo-gradiente" id="saveProductBtn">
+                    <i class="fas fa-save me-2"></i>
+                    Guardar Producto
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Confirmación -->
+<div class="modal fade" id="confirmModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-rojo text-blanco">
+                <h5 class="modal-title">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    Confirmación
+                </h5>
+                <button type="button" class="btn-close btn-close-blanco" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="confirm-icon mb-3">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <h5 id="confirmMessage">¿Está seguro de realizar esta acción?</h5>
+                <p class="text-muted" id="confirmDetails">Esta acción no se puede deshacer</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-outline-negro" data-bs-dismiss="modal">
+                    <i class="fas fa-times me-2"></i>
+                    Cancelar
+                </button>
+                <button type="button" class="btn btn-rojo" id="confirmActionBtn">
+                    <i class="fas fa-check me-2"></i>
+                    Confirmar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Toast Notifications -->
+<div class="toast-container position-fixed top-0 end-0 p-3">
+    <!-- Toasts se crearán dinámicamente -->
+</div>

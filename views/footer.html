@@ -1,0 +1,58 @@
+<!-- Scripts -->
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- JavaScript Personalizado -->
+<script src="/js/main.js"></script>
+
+<script>
+    // Inicializar tooltips de Bootstrap
+    document.addEventListener('DOMContentLoaded', function() {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    });
+</script>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="footer-brand">
+                    <i class="fas fa-database rojo-text me-2"></i>
+                    <span class="fw-bold">SISTEMA</span>
+                    <span class="rojo-text fw-bold">Gestion</span>
+                    <span class="version ms-2">v1.0.0</span>
+                </div>
+                <p class="footer-text mb-0">
+                    Sistema de gestión de Productos desarrollado con Node.js, Express y Bootstrap 5.
+                </p>
+            </div>
+            <div class="col-md-6 text-end">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">
+                        <i class="fas fa-question-circle"></i>
+                        Ayuda
+                    </a>
+                    <a href="#" class="footer-link">
+                        <i class="fas fa-file-alt"></i>
+                        Documentación
+                    </a>
+                    <a href="#" class="footer-link">
+                        <i class="fas fa-envelope"></i>
+                        Contacto
+                    </a>
+                </div>
+                <div class="footer-copyright">
+                    &copy; 2024 SISTEMA Gestion. Todos los derechos reservados.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Animaciones de entrada -->
+<div class="page-transition"></div>
+</body>
+</html>
